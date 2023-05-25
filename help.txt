@@ -1,0 +1,5 @@
+Fetcher tous les films
+Fetcher toutes les catégories
+Fetcher les films par catégorie
+Fetcher chaque film par id
+Fetcher les films en fonction de la search
