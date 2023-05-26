@@ -1,0 +1,10 @@
+.movie-container div img{
+    width: 15vw;
+    height:40vh;
+}
+
+.movie-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
