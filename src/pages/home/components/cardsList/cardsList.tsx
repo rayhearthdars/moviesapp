@@ -1,19 +1,19 @@
 import React from 'react';
-import { MovieType } from '../../../../models/Film';
-import { Movie } from './Cards';
+import { CardType } from '../../../../models/Film';
+import { Card } from './Cards';
 import "./CardsList.css";
 import "./Cards.css"
 
-type MovieListProps = {
-    movies: MovieType[];
+type CardListProps = {
+    cards: CardType[];
 }
 
-export const MoviesList = ({movies}:MovieListProps) => {
+export const CardsList = ({cards}:CardListProps) => {
     return (
-        <div className="movie-container">
-          {movies.map((item) => (
-            <Movie movie={item} key={item.id} />
+        <main className="card-container">
+          {cards.map((item) => (
+            <Card card={item} key={item.id} />
           ))}
-        </div>
+        </main>
       );
 }

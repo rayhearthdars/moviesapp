@@ -1,17 +1,17 @@
 import React from "react";
 import "./Cards.css";
-import { MovieType } from "../../../../models/Film";
+import { CardType } from "../../../../models/Film";
 
-type MovieProps = { 
-    movie: MovieType;
+type CardProps = { 
+    card: CardType;
   }
 
-export const Movie = ({movie}: MovieProps) => {
+export const Card = ({card}: CardProps) => {
     return (
-        <div className="movie-content">
-          <h2>{movie.title}</h2>
-          <img src={movie.src} />
-        </div>
+        <article className="card-content">
+          <h2>{card.title}</h2>
+          <img src={card.src} />
+        </article>
     );
   };
   
