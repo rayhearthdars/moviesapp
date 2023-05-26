@@ -1,9 +1,9 @@
-.movie-container div img{
+.card-container img{
     width: 15vw;
     height:40vh;
 }
 
-.movie-container {
+.card-container {
     display: flex;
     justify-content: center;
     text-align: center;
