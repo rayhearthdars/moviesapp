@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { data } from "./data/data";
-import { Card } from "./pages/home/components/cardsList/Cards";
-import { CardsList } from "./pages/home/components/cardsList/CardsList";
-import { CardType } from "./models/Film";
+import { Card } from "./pages/home/components/cardsList/cards";
+import { CardsList } from "./pages/home/components/cardsList/cardsList";
+import { CardType } from "./models/movie";
 
 const App = () => {
 
   const [cards, setCards] = useState(data);
   return (
-  <div className="main">
+  <main>
     <CardsList cards={cards} />
-  </div>
+  </main>
 );
 };
 

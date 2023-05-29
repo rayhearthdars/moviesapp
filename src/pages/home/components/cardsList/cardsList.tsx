@@ -1,19 +1,19 @@
 import React from 'react';
-import { CardType } from '../../../../models/Film';
-import { Card } from './Cards';
-import "./CardsList.css";
-import "./Cards.css"
+import { Card } from './cards';
+import "./cardsList.css";
+import "./cards.css"
+import { CardType } from '../../../../models/movie';
 
 type CardListProps = {
-    cards: CardType[];
+  cards:CardType[]
 }
 
 export const CardsList = ({cards}:CardListProps) => {
     return (
-        <main className="card-container">
+        <section className="card-container">
           {cards.map((item) => (
             <Card card={item} key={item.id} />
           ))}
-        </main>
+        </section>
       );
 }
