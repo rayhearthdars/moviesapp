@@ -11,9 +11,8 @@ export const HomePage = () => {
     const [cards, setCards] = useState(data);
    return( <body>
     <Header/>
-    <main>
+    <main id="main">
     <section className="button-container">
-      <button type="button" id="accueil">Accueil</button>
       <CategoryList/>
       </section>
       <CardsList cards={cards}/>
