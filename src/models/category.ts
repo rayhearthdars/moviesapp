@@ -1,5 +1,6 @@
 
 
-export type category = {
-    name: string;
+export type Category = {
+        id: number;
+        name: string;
 }
