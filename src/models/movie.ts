@@ -6,3 +6,5 @@ export interface CardType {
     release_date: string;
     overview:string;
   };
+
+  
