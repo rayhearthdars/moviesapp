@@ -7,7 +7,7 @@ export const Details = () => {
     
     return (
         <main>
-            <Link to="../home/Home" ><button type="button">Go Back</button></Link>
+            <Link to="/" ><button type="button">Go Back</button></Link>
             <img src={data[0].poster_path} alt={`poster for the fiml ${data[0].title}`} />
             <h2>{data[0].title}</h2>
             <div>
