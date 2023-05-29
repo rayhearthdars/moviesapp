@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 // import { Header } from './components/Header';
 import { Details } from './pages/details/details';
 import { HomePage } from './pages/home/Home';
-import { CardType } from "./models/movie";
+
 
 function App() {
 
@@ -18,7 +18,6 @@ function App() {
   return (
     <body>
     <RouterProvider router={router}/>
-    <HomePage/>
   </body>);
 }
 
