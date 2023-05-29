@@ -1,19 +1,19 @@
-import React from "react";
-import "./Home.css";
-import { useState } from "react";
-import { CardsList } from "./components/cardsList/cardsList";
-import { data } from "../../data/data";
-import { Header } from "../../components/Header";
-import { CategoryList } from "./components/filterButtons/ButtonsList";
+import React from 'react';
+import { useState } from 'react';
+import { CardsList } from './components/cardsList/cardsList';
+import { data } from '../../data/data';
+import { Header } from '../../components/Header';
+import { CategoriesList } from '../home/components/filterButtons/ButtonsList';
+
 
 
 export const HomePage = () => {
     const [cards, setCards] = useState(data);
    return( <body>
     <Header/>
-    <main>
+     <main>
     <section className="button-container">
-      <CategoryList/>
+      <CategoriesList/>
       </section>
       <CardsList cards={cards}/>
     </main>
