@@ -4,6 +4,8 @@ import { category } from "../../../../models/category";
 
 export const CategoriesButton = ({name}:category) => {
     return (
-        <button type="button">{name}</button>
+        
+        <button type="button" className="category-button">{name}</button>
+
     );
 }

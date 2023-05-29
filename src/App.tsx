@@ -6,7 +6,6 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import { Details } from './pages/details/details';
 import { HomePage } from './pages/home/Home';
 
-
 function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
