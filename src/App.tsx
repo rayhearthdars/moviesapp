@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { data } from "./data/data";
-import { Card } from "./pages/home/components/cardsList/cards";
-import { CardsList } from "./pages/home/components/cardsList/cardsList";
 import { CardType } from "./models/movie";
+import { DisplayCardsList } from "./pages/home/Home";
+import { DisplayHeader } from "./pages/home/Home";
+import { Header } from "./components/Header";
+import "./App.css"
 
 const App = () => {
 
-  const [cards, setCards] = useState(data);
   return (
+    <body>
+      <Header/>
   <main>
-    <CardsList cards={cards} />
+    <DisplayCardsList/>
   </main>
+  </body>
 );
 };
 
