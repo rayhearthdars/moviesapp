@@ -2,10 +2,10 @@ import React from 'react';
 import { Card } from './cards';
 import "./cardsList.css";
 import "./cards.css"
-import { CardType } from '../../../../models/movie';
+import { Movie } from '../../../../models/movies';
 
 type CardListProps = {
-  cards:CardType[]
+  cards:Movie[]
 }
 
 export const CardsList = ({cards}:CardListProps) => {

@@ -12,7 +12,9 @@ export const HomePage = () => {
    return( <body>
     <Header/>
      <main>
-       <CategoriesList/>
+    <section className="button-container">
+      <CategoriesList/>
+      </section>
       <CardsList cards={cards}/>
     </main>
     </body>);

@@ -1,9 +1,9 @@
 import React from "react";
 import "./cards.css";
-import { CardType } from "../../../../models/movie";
+import { Movie } from "../../../../models/movies";
 
 type CardProps = { 
-    card:CardType
+    card:Movie
   }
 
 export const Card = ({card}: CardProps) => {

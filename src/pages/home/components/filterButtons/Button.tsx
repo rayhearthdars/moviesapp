@@ -4,6 +4,8 @@ import './Button.css';
 
 export const CategoryButton = ({name}:{name:string}) => {
     return (
-        <button type="button">{name}</button>
+        
+        <button type="button" className="category-button">{name}</button>
+
     );
 }

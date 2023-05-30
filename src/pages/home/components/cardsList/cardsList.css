@@ -5,6 +5,8 @@
 
 .card-container {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    height: 90vh;
+    overflow: auto;
     text-align: center;
 }
