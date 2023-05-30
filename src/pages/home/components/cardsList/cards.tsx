@@ -1,6 +1,6 @@
 import React from "react";
 import "./cards.css";
-import { Movie } from "../../../../models/movies";
+import { Movie } from "../../../../models/movie";
 
 type CardProps = { 
     card:Movie
