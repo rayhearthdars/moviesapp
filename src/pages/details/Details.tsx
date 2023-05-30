@@ -4,7 +4,6 @@ import { getMovieById } from '../../api/movie';
 import { Movie } from "../../models/movie";
 import { Header } from "../../components/Header";
 
-
 export const Details = () => {
     const [movieData, setMovieData] = useState<Movie | null>(null);
     useEffect(() => {
