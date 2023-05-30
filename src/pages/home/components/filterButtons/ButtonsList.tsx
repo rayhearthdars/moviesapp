@@ -6,7 +6,7 @@ import './ButtonsList.css';
 
 
 export const CategoriesList = () => {
-    const [categoriesData, setCategoriesData] = useState<Category[] | null>(null)
+    const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
 
     useEffect(() => {
         let result;
@@ -23,6 +23,7 @@ export const CategoriesList = () => {
     if (categoriesData === null) return null
     return (
         <>
+            <CategoryButton key="all" name="all"/>
             {
                 categoriesData.map(category => (
                     <CategoryButton key={category.name} name={category.name}  />))
