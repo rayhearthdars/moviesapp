@@ -6,5 +6,5 @@ export type Movie = {
     popularity: number;
     release_date: string;
     overview: string;
-    genre_ids: number;
+    genre_ids: number[];
 }
