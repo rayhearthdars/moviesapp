@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { getMovieById } from '../../api/movie';
-import { Movie } from "../../models/movies";
+import { Movie } from "../../models/movie";
+import { Header } from "../../components/Header";
 
 
 export const Details = () => {
@@ -15,26 +16,29 @@ export const Details = () => {
             
     }, [movieData])
 
-    if (movieData == null) return null;
+    if (movieData === null) return null;
     return (
-        <main>
-            <Link to="/" ><button type="button">Go Back</button></Link>
-            <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} alt={`poster for the fiml ${movieData.title}`} />
-            <h2>{movieData.title}</h2>
-            <div>
-                <h3>Ratings</h3>
+        <>
+            <Header/>
+            <main>
+                <Link to="/" ><button type="button">Go Back</button></Link>
+                <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} alt={`poster for the fiml ${movieData.title}`} />
+                <h2>{movieData.title}</h2>
                 <div>
-                    <p>{movieData.popularity}</p>
-                </div>              
-            </div>
-            <div>
-                <h3>Release Date</h3>
-                <p>{movieData.release_date}</p>
-            </div>
-            <div>
-                <h3>Synopsis</h3>
-                <p>{movieData.overview}</p>
-            </div>
-        </main>
+                    <h3>Ratings</h3>
+                    <div>
+                        <p>{movieData.popularity}</p>
+                    </div>              
+                </div>
+                <div>
+                    <h3>Release Date</h3>
+                    <p>{movieData.release_date}</p>
+                </div>
+                <div>
+                    <h3>Synopsis</h3>
+                    <p>{movieData.overview}</p>
+                </div>
+            </main>
+        </>
     )
 }
