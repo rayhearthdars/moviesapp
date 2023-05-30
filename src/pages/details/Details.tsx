@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { getMovieById } from '../../api/movie';
-import { Movie } from "../../models/movies";
+import { Movie } from "../../models/movie";
 
 
 export const Details = () => {

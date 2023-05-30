@@ -17,7 +17,7 @@ export const CategoriesList = () => {
             setCategoriesData(result.genres);
         }
         getCategoriesList();
-    })
+    }, [])
 
     
     if (categoriesData === null) return null
