@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+
+.main_container {
+	font-family: "Share Tech", sans-serif;
+}
+
+.goBackButton {
+	border-radius: 20px;
+	border: none;
+	box-shadow: 2px 5px 5px 5px #00000075;
+	background-color: #4b4747;
+	color: #ffffff;
+	font-family: "Share Tech", sans-serif;
+	font-size: 1.25rem;
+	width: 21.5625rem;
+	height: 4.1875rem;
+	position: absolute;
+	top: 8.56rem;
+	left: 1.25rem;
+	transition: all 0.2s;
+}
+
+.goBackButton:hover {
+	box-shadow: 2px 1px 1px 1px #00000075;
+	top: 8.81rem;
+}
+
+.details_poster_title_overview_flex_container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+
+
+.details_poster {
+	width: 20.375rem;
+	margin: 3rem auto;
+
+}
+
+.details_movie_flex_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+.details_title {
+	padding-top: 5rem;
+	margin: 0 auto;
+	font-family: "Share Tech", sans-serif;
+	font-weight: 300;
+	font-size: 4rem;
+	width: 20rem;
+}
+.details_ratings_container {
+    margin-top: 5rem;
+    display: flex;
+}
+
+.details_ratings_number {
+	border-radius: 50%;
+	width: 7.75rem;
+	height: 7.75rem;
+	background-color: #d9d9d9;
+}
+
+.details_ratings_actual_number {
+	position: relative;
+	top: 35%;
+	left: 25%;
+    font-size: 2rem;
+}
+
+.details_ratings {
+	padding-top: 3rem;
+    padding-left: 1rem;
+    font-size: 1.8rem;
+}
+.details_release_date_container {
+    font-size: 1.8rem;
+}
+.details_release_date_container {
+	margin: 5rem auto;
+}
+
+.details_overview {
+	width: 30%;
+	margin: 0 auto;
+    line-height: 2;
+    font-size: 1.5rem;
+    background-color: #d9d9d9;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.details_overview_title {
+	font-size: 2rem;
+	line-height: 2;
+}
+
+@media screen and (max-width: 728px) {
+	.details_overview {
+		width: 75%;
+	}
+}
