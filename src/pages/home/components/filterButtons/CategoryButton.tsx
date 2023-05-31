@@ -12,9 +12,10 @@ export const CategoryButton = ({ category, name, getCategory }: CategoryButtonPr
 	return (
 		<button
 			type="button"
-			onClick={() => getCategory(category)}
+			onClick={() => getCategory(category)} className="category-button"
 		>
 			{name}
 		</button>
+		
 	);
 };
