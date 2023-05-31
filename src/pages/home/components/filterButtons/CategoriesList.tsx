@@ -4,6 +4,7 @@ import { CategoryButton } from "../filterButtons/CategoryButton";
 import { Category } from "../../../../models/category";
 import "./CategoriesList.css";
 
+
 export const CategoriesList = ({ getCategory }: { getCategory: (category: Category) => void }) => {
 	const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
 
@@ -20,6 +21,7 @@ export const CategoriesList = ({ getCategory }: { getCategory: (category: Catego
 	if (categoriesData === null) return null;
 	return (
 		<>
+			
 			{categoriesData.map((category) => (
 				<CategoryButton
 					key={category.name}
