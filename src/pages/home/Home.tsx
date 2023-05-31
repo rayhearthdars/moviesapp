@@ -1,32 +1,46 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { getAllMovies } from '../../api/movie';
-import { CardsList } from './components/cardsList/cardsList';
-import { Header } from '../../components/Header';
-import { CategoriesList } from '../home/components/filterButtons/ButtonsList';
-import { Movie } from '../../models/movie';
-
-
+import React from "react";
+import { useState, useEffect } from "react";
+import { getAllMovies, getMoviesByCategory } from "../../api/movie";
+import { CardsList } from "./components/cardsList/MoviesList";
+import { Header } from "../../components/Header";
+import { CategoriesList } from "./components/filterButtons/CategoriesList";
+import { Movie } from "../../models/movie";
+import { Category } from "../../models/category";
 
 export const HomePage = () => {
-    const [cards, setCards] = useState<Movie[] | null>(null);
-    useEffect(() =>{
-      const getMovies = async () => {
-        const result = await getAllMovies();
-        setCards(result ?? null);
-      }
-      getMovies();
-    }, [])
+	const [cards, setCards] = useState<Movie[]>([]);
+	const [category, setCategory] = useState<Category | undefined>(undefined);
 
-    if (cards == null) return null;
+	useEffect(() => {
+		const getMovies = async () => {
+			const result = await getAllMovies();
+			setCards(result ?? []);
+		};
+		getMovies();
+	}, []);
 
-   return( <body>
-    <Header/>
-     <main id='main'>
-    <section className="button-container">
-      <CategoriesList/>
-      </section>
-      <CardsList cards={cards}/>
-    </main>
-    </body>);
-}
+	const getClickedCategory = (category: Category) => {
+		setCategory(category);
+	};
+
+	useEffect(() => {
+    const getByCategory = async () => {
+      console.log(category)
+			const result = await getMoviesByCategory(category?.id);
+			setCards(result ?? []);
+		};
+		getByCategory();
+	}, [category]);
+
+	return (
+		<>
+			<Header />
+			<main id="main">
+				<section className="button-container">
+					<CategoriesList getCategory={getClickedCategory} />
+				</section>
+				<CardsList cards={cards} />
+			</main>
+		</>
+	);
+};
