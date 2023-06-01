@@ -39,10 +39,10 @@ export const HomePage = () => {
 	useEffect(() => {
 		const getMoviesBySearching = async () => {
 			const searchResult = await getMoviesBySearch(query);
-			if (searchResult == undefined) return;
+			if (searchResult === undefined) return;
 			setMovies(searchResult);
 		};
-		if (query != "") {
+		if (query !== "") {
 			getMoviesBySearching();
 		}
 	}, [query]);
@@ -50,10 +50,11 @@ export const HomePage = () => {
 	return (
 		<>
 			<Header />
-			<AllMoviesButton getMovies={getMovies} />
+
 			<SearchBar search={setQuery} />
 			<main id="main">
 				<section className="button-container">
+					<AllMoviesButton getMovies={getMovies} />
 					<CategoriesList getCategory={getClickedCategory} />
 				</section>
 				<MoviesList movies={movies} />

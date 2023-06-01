@@ -13,3 +13,7 @@
 	left: 1.25rem;
 	transition: all 0.2s;
 }
+
+.search_bar:hover {
+    background-color: rgb(0, 0, 0);
+}
