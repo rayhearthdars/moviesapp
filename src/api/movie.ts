@@ -35,3 +35,13 @@ export const getAllMovies = async () => {
 		console.error(err);
 	}
 };
+
+export const getMoviesBySearch = async (query:string | undefined) => {
+	if (query == null) return;
+	const url = `https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${query}`;
+	try {
+		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
+	} catch (err) {
+		console.error(err);
+	}
+};
