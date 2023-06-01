@@ -7,6 +7,7 @@ import { CategoriesList } from "./components/filterButtons/CategoriesList";
 import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
 import { SearchBar } from "./components/SearchBar/SearchBar";
+import './HomePage.css';
 
 
 export const HomePage = () => {
