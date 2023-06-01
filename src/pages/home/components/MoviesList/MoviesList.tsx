@@ -1,5 +1,5 @@
 import React from "react";
-import { MovieCard } from "./Movie";
+import { MovieCard } from "./MovieCard";
 import "./MoviesList.css";
 import { Movie } from "../../../../models/movie";
 
