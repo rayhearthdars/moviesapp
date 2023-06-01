@@ -2,7 +2,7 @@
     margin: 1rem;
     padding: 2rem;
     border-radius: 10px;
-    background-color: rgb(87, 85, 85);
+    background-color: #2b2a2a;
 }
 
 .movie-content h2{
@@ -10,10 +10,11 @@
     color: white;
     height: 4rem;
     margin: 2rem 0;
+    font-weight: 200;
 }
 
 .movie-content:hover {
-    background-color: lightgrey;
+    background-color: #777777;
 }
 
 .movie-content:active{
