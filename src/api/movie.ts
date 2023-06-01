@@ -27,8 +27,9 @@ export const getMoviesByCategory = async (category: number | undefined) => {
 	return result.results;
 };
 
-export const getAllMovies = async () => {
-	const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API}`;
+export const getAllMovies = async (pageNumber: number | undefined) => {
+	if (pageNumber == null) return;
+	const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&page=${pageNumber}`;
 	try {
 		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
 	} catch (err) {

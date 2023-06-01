@@ -14,17 +14,23 @@ import { UpcomingButton } from "./components/filterButtons/UpcominButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
+	const [pageNumber, setPageNumber] = useState(1);
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
 
+
+	const getPageNumber = (pageNumber:number) => {
+		setPageNumber(pageNumber);
+}
+
 	const getMovies = async () => {
-		const result = await getAllMovies();
+		const result = await getAllMovies(pageNumber);
 		setMovies(result ?? []);
 	};
 
 	useEffect(() => {
 		getMovies();
-	}, []);
+	}, [pageNumber]);
 
 	const getClickedCategory = (category: Category) => {
 		setCategory(category);
@@ -69,7 +75,10 @@ export const HomePage = () => {
 					<UpcomingButton getUpcoming={getUpcoming} />
 					<CategoriesList getCategory={getClickedCategory} />
 				</section>
-				<MoviesList movies={movies} />
+				<MoviesList
+					pageNumber={getPageNumber}
+					movies={movies}
+				/>
 			</main>
 		</>
 	);
