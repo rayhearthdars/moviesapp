@@ -11,6 +11,7 @@ import "./HomePage.css";
 import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { getUpcomingMovies } from "../../api/movie";
 import { UpcomingButton } from "./components/filterButtons/UpcominButton";
+import { Pagination } from "./components/pagination/Pagination";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
@@ -67,18 +68,23 @@ export const HomePage = () => {
 	return (
 		<>
 			<Header />
-
 			<SearchBar search={setQuery} />
 			<main id="main">
-				<section className="button-container">
+				<aside className="button-container">
 					<AllMoviesButton getMovies={getMovies} />
 					<UpcomingButton getUpcoming={getUpcoming} />
 					<CategoriesList getCategory={getClickedCategory} />
-				</section>
-				<MoviesList
-					pageNumber={getPageNumber}
-					movies={movies}
-				/>
+				</aside>
+				<div className="movie_and_pagination_container">
+					<MoviesList
+						pageNumber={getPageNumber}
+						movies={movies}
+					/>
+					<Pagination
+						getPageNumber={getPageNumber}
+						pageNumber={pageNumber}
+					/>
+				</div>
 			</main>
 		</>
 	);
