@@ -6,9 +6,9 @@ import { Header } from "../../components/Header";
 import { CategoriesList } from "./components/filterButtons/CategoriesList";
 import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
+import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import './HomePage.css';
-
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);

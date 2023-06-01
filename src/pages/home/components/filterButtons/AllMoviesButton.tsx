@@ -1,10 +1,10 @@
 import React from "react";
 import "./CategoryButton.css";
-import { Movie } from "../../../../models/movie";
 
 export const AllMoviesButton = ({ getMovies }: { getMovies: () => Promise<void> }) => {
 	return (
 		<button
+			className="category-button"
 			type="button"
 			onClick={() => getMovies()}
 		>
