@@ -11,5 +11,6 @@ export const SearchBar = ({search}:SearchBarProps) => {
       <input
 onChange={(e) => search(e.currentTarget.value)} 
         placeholder='Search...'
+        className="search_bar"
       />)
   }

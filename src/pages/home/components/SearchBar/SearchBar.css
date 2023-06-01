@@ -1,6 +1,15 @@
-.searchbar{
-    position: absolute;
-    margin-top:-5vh;
-    width: 20vw;
-    padding: 5px;
+.search_bar {
+	z-index: 5;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 2px 5px 5px 5px #00000075;
+	background-color: #4b4747;
+	color: #ffffff;
+	font-size: 1.25rem;
+	width: 21.5625rem;
+	height: 4rem;
+	position: absolute;
+	top: 8rem;
+	left: 1.25rem;
+	transition: all 0.2s;
 }
