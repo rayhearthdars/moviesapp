@@ -9,6 +9,8 @@ import { Category } from "../../models/category";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import "./HomePage.css";
 import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
+import { getUpcomingMovies } from "../../api/movie";
+import { UpcomingButton } from "./components/filterButtons/UpcominButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
@@ -47,6 +49,15 @@ export const HomePage = () => {
 		}
 	}, [query]);
 
+		const getUpcoming = async () => {
+			const result = await getUpcomingMovies();
+			setMovies(result ?? []);
+		};
+
+		useEffect(() => {
+			getUpcoming();
+		}, []);
+
 	return (
 		<>
 			<Header />
@@ -55,6 +66,7 @@ export const HomePage = () => {
 			<main id="main">
 				<section className="button-container">
 					<AllMoviesButton getMovies={getMovies} />
+					<UpcomingButton getUpcoming={getUpcoming} />
 					<CategoriesList getCategory={getClickedCategory} />
 				</section>
 				<MoviesList movies={movies} />

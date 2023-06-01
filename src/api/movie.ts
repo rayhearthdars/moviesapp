@@ -36,9 +36,18 @@ export const getAllMovies = async () => {
 	}
 };
 
-export const getMoviesBySearch = async (query:string | undefined) => {
+export const getMoviesBySearch = async (query: string | undefined) => {
 	if (query == null) return;
 	const url = `https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${query}`;
+	try {
+		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
+	} catch (err) {
+		console.error(err);
+	}
+};
+
+export const getUpcomingMovies = async () => {
+	const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API}`;
 	try {
 		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
 	} catch (err) {
