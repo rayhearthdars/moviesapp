@@ -6,20 +6,21 @@ import { Header } from "../../components/Header";
 import { CategoriesList } from "./components/filterButtons/CategoriesList";
 import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
-import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { SearchBar } from "./components/SearchBar/SearchBar";
-import './HomePage.css';
+import "./HomePage.css";
+import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
 
+	const getMovies = async () => {
+		const result = await getAllMovies();
+		setMovies(result ?? []);
+	};
+
 	useEffect(() => {
-		const getMovies = async () => {
-			const result = await getAllMovies();
-			setMovies(result ?? []);
-		};
 		getMovies();
 	}, []);
 
@@ -28,7 +29,7 @@ export const HomePage = () => {
 	};
 
 	useEffect(() => {
-    const getByCategory = async () => {
+		const getByCategory = async () => {
 			const result = await getMoviesByCategory(category?.id);
 			setMovies(result ?? []);
 		};
@@ -40,18 +41,17 @@ export const HomePage = () => {
 			const searchResult = await getMoviesBySearch(query);
 			if (searchResult == undefined) return;
 			setMovies(searchResult);
-		}
-		if (query !="") {
+		};
+		if (query != "") {
 			getMoviesBySearching();
-
 		}
-		
-	}, [query])
-	
+	}, [query]);
+
 	return (
 		<>
 			<Header />
-			<SearchBar search={setQuery}/>
+			<AllMoviesButton getMovies={getMovies} />
+			<SearchBar search={setQuery} />
 			<main id="main">
 				<section className="button-container">
 					<CategoriesList getCategory={getClickedCategory} />
