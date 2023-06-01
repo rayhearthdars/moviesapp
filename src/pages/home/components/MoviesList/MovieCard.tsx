@@ -9,9 +9,12 @@ type MovieProps = {
 
 export const MovieCard = ({movie}: MovieProps) => {
 	return (
-		<Link to={`/details/${movie.id}`}>
+		<Link
+			to={`/details/${movie.id}`}
+			style={{ textDecoration: "none" }}
+		>
 			<article className="movie-content">
-				<h2>{movie.title}</h2>
+				<h2 >{movie.title}</h2>
 				<img
 					src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 					alt="Movie poster"
