@@ -7,6 +7,7 @@ import { CategoriesList } from "./components/filterButtons/CategoriesList";
 import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
 import { SearchBar } from "./components/SearchBar/SearchBar";
+import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 
 
 export const HomePage = () => {
@@ -14,11 +15,11 @@ export const HomePage = () => {
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
 
+	const getMovies = async () => {
+		const result = await getAllMovies();
+		setCards(result ?? []);
+	};
 	useEffect(() => {
-		const getMovies = async () => {
-			const result = await getAllMovies();
-			setMovies(result ?? []);
-		};
 		getMovies();
 	}, []);
 
@@ -27,7 +28,7 @@ export const HomePage = () => {
 	};
 
 	useEffect(() => {
-    const getByCategory = async () => {
+		const getByCategory = async () => {
 			const result = await getMoviesByCategory(category?.id);
 			setMovies(result ?? []);
 		};
@@ -53,6 +54,7 @@ export const HomePage = () => {
 			<SearchBar search={setQuery}/>
 			<main id="main">
 				<section className="button-container">
+					<AllMoviesButton getMovies={getMovies} />
 					<CategoriesList getCategory={getClickedCategory} />
 				</section>
 				<MoviesList movies={movies} />
