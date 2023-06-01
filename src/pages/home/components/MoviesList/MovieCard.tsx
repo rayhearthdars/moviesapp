@@ -1,5 +1,5 @@
 import React from "react";
-import "./Movie.css";
+import "./MovieCard.css";
 import { Movie } from "../../../../models/movie";
 import {Link} from 'react-router-dom'
 
