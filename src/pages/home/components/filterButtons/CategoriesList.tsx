@@ -3,7 +3,6 @@ import { getCategories } from "../../../../api/category";
 import { CategoryButton } from "../filterButtons/CategoryButton";
 import { Category } from "../../../../models/category";
 import "./CategoriesList.css";
-import { AllMoviesButton } from "./AllMoviesButton";
 
 
 export const CategoriesList = ({ getCategory }: { getCategory: (category: Category) => void }) => {

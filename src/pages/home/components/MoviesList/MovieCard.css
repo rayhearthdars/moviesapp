@@ -1,9 +1,21 @@
 .movie-content{
-    margin: 0 2vw;
+    margin: 0 1rem;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgb(87, 85, 85);
 }
 
 .movie-content h2{
-    margin: 2vh 0;
-    width: 15vw;
+    width: 12rem;
     color: white;
+    height: 4rem;
+    margin: 2rem 0;
+}
+
+.movie-content:hover {
+    background-color: lightgrey;
+}
+
+.movie-content:active{
+    background-color: lightgrey;
 }
