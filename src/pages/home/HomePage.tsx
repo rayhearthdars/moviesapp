@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getAllMovies, getMoviesByCategory, getMoviesBySearch } from "../../api/movie";
+import { getAllMovies, getMoviesByCategory, getMoviesBySearch, getTrendingMovies } from "../../api/movie";
 import { MoviesList } from "./components/MoviesList/MoviesList";
 import { Header } from "../../components/Header";
 import { CategoriesList } from "./components/filterButtons/CategoriesList";
@@ -11,6 +11,7 @@ import "./HomePage.css";
 import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { getUpcomingMovies } from "../../api/movie";
 import { UpcomingButton } from "./components/filterButtons/UpcominButton";
+import { TrendingButton } from "./components/filterButtons/TrendingButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
@@ -64,6 +65,16 @@ export const HomePage = () => {
 			getUpcoming();
 		}, []);
 
+		const getTrending = async () => {
+			const result = await getTrendingMovies();
+			setMovies(result ?? []);
+		};
+
+		useEffect(() => {
+			getTrending();
+		}, []);
+
+
 	return (
 		<>
 			<Header />
@@ -73,6 +84,7 @@ export const HomePage = () => {
 				<section className="button-container">
 					<AllMoviesButton getMovies={getMovies} />
 					<UpcomingButton getUpcoming={getUpcoming} />
+					<TrendingButton getTrendingButton={getTrending}/>
 					<CategoriesList getCategory={getClickedCategory} />
 				</section>
 				<MoviesList

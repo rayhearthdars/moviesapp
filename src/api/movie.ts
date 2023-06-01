@@ -55,3 +55,13 @@ export const getUpcomingMovies = async () => {
 		console.error(err);
 	}
 };
+
+export const getTrendingMovies = async () => {
+	const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API}`;
+	try {
+		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
+	} catch (err) {
+		console.error(err);
+	}
+};
+
