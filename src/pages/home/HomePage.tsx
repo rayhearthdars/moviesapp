@@ -19,10 +19,9 @@ export const HomePage = () => {
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
 
-
-	const getPageNumber = (pageNumber:number) => {
+	const getPageNumber = (pageNumber: number) => {
 		setPageNumber(pageNumber);
-}
+	};
 
 	const getMovies = async () => {
 		const result = await getAllMovies(pageNumber);
@@ -56,25 +55,27 @@ export const HomePage = () => {
 		}
 	}, [query]);
 
-		const getUpcoming = async () => {
-			const result = await getUpcomingMovies();
-			setMovies(result ?? []);
-		};
+	const getUpcoming = async () => {
+		const result = await getUpcomingMovies();
+		setMovies(result ?? []);
+	};
 
-		useEffect(() => {
-			getUpcoming();
-		}, []);
+	useEffect(() => {
+		getUpcoming();
+	}, []);
 
 	return (
 		<>
 			<Header />
 			<SearchBar search={setQuery} />
 			<main id="main">
-				<aside className="button-container">
-					<AllMoviesButton getMovies={getMovies} />
-					<UpcomingButton getUpcoming={getUpcoming} />
-					<CategoriesList getCategory={getClickedCategory} />
-				</aside>
+				<CategoriesList
+					getCategory={getClickedCategory}
+					getPageNumber={getPageNumber}
+					getMovies={getMovies}
+					getUpcoming={getUpcoming}
+				/>
+
 				<div className="movie_and_pagination_container">
 					<MoviesList
 						pageNumber={getPageNumber}

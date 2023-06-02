@@ -3,8 +3,8 @@ body {
 }
 
 #main {
-	display: flex;
-	justify-content: left;
+	/* display: flex;
+	justify-content: left; */
 }
 
 .movie_and_pagination_container {
