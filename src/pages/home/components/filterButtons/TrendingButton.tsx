@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export const TrendingButton = ({ getTrending }: { getTrending: () => Promise<void> }) => {
+export const TrendingButton = ({ getTrending }: { getTrending: () => void} => {
 	return (
 		<button
 			className="category-button"
