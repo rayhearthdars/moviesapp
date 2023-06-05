@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getAllMovies, getMoviesByCategory, getMoviesBySearch } from "../../api/movie";
+import { getAllMovies, getMoviesByCategory, getMoviesBySearch, getTrendingMovies } from "../../api/movie";
 import { MoviesList } from "./components/MoviesList/MoviesList";
 import { Header } from "../../components/Header";
 import { CategoriesList } from "./components/filterButtons/CategoriesList";
@@ -10,6 +10,7 @@ import { SearchBar } from "./components/SearchBar/SearchBar";
 import "./HomePage.css";
 import { getUpcomingMovies } from "../../api/movie";
 import { Pagination } from "./components/pagination/Pagination";
+import { TrendingButton } from "./components/filterButtons/TrendingButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
@@ -73,6 +74,16 @@ export const HomePage = () => {
 		};
 		if (upcoming) getUpcoming();
 	}, [upcoming]);
+
+		const getTrending = async () => {
+			const result = await getTrendingMovies();
+			setMovies(result ?? []);
+		};
+
+		useEffect(() => {
+			getTrending();
+		}, []);
+
 
 	return (
 		<>
