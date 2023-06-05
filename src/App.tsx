@@ -6,13 +6,18 @@ import { Details } from "./pages/details/Details";
 import { HomePage } from "./pages/home/HomePage";
 
 function App() {
-
 	const router = createBrowserRouter(
 		createRoutesFromElements(
-			<Route path="">
-				<Route path="" element={<HomePage />} />
-				<Route path={`/details/:movieId`} element={<Details />} />
-			</Route>
+			<>
+				<Route
+					path=""
+					element={<HomePage />}
+				/>
+				<Route
+					path={`/details/:movieId`}
+					element={<Details />}
+				/>
+			</>
 		)
 	);
 	return <RouterProvider router={router} />;

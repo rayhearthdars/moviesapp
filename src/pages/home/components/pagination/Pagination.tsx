@@ -13,19 +13,6 @@ type PaginationProps = {
 };
 
 export const Pagination = ({ getPageNumber, pageNumber }: PaginationProps) => {
-	const nextClick = () => {
-		if (pageNumber < totalPages) {
-			let newPage = pageNumber + 1;
-			getPageNumber(newPage);
-		}
-	};
-	const prevClick = () => {
-		if (pageNumber > 1) {
-			let newPage = pageNumber - 1;
-			getPageNumber(newPage);
-		}
-	};
-
 	const clickToLast = () => {
 		getPageNumber(totalPages);
 	};
@@ -46,7 +33,7 @@ export const Pagination = ({ getPageNumber, pageNumber }: PaginationProps) => {
 			<button
 				className="pagination_button"
 				type="button"
-				onClick={() => prevClick()}
+				onClick={() => getPageNumber(pageNumber - 1)}
 			>
 				Prev
 			</button>
@@ -58,6 +45,7 @@ export const Pagination = ({ getPageNumber, pageNumber }: PaginationProps) => {
 			</p>
 			{pages.map((page) => (
 				<button
+					key={page}
 					className="pagination_button "
 					id={pageNumber === page ? "isActive" : "isNotActive"}
 					type="button"
@@ -76,7 +64,7 @@ export const Pagination = ({ getPageNumber, pageNumber }: PaginationProps) => {
 			<button
 				className="pagination_button"
 				type="button"
-				onClick={() => nextClick()}
+				onClick={() => getPageNumber(pageNumber + 1)}
 			>
 				Next
 			</button>

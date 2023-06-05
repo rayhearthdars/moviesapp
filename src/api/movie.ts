@@ -15,9 +15,10 @@ export const getMovieById = async (id: string | undefined) => {
 	return result;
 };
 
-export const getMoviesByCategory = async (category: number | undefined) => {
+export const getMoviesByCategory = async (category: number | undefined, pageNumber: number | undefined) => {
 	if (category == null) return;
-	const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&with_genres=${category}`;
+	if (pageNumber == null) return;
+	const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&with_genres=${category}&page=${pageNumber}`;
 	let result;
 	try {
 		result = await axios.get(url).then((res) => res.data);

@@ -8,42 +8,53 @@ import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import "./HomePage.css";
-import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { getUpcomingMovies } from "../../api/movie";
-import { UpcomingButton } from "./components/filterButtons/UpcominButton";
 import { Pagination } from "./components/pagination/Pagination";
 import { TrendingButton } from "./components/filterButtons/TrendingButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
-	const [pageNumber, setPageNumber] = useState(1);
+	const [pageNumber, setPageNumber] = useState<number>(1);
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
-
-	const getPageNumber = (pageNumber: number) => {
-		setPageNumber(pageNumber);
-	};
-
-	const getMovies = async () => {
-		const result = await getAllMovies(pageNumber);
-		setMovies(result ?? []);
-	};
+	const [allMovies, setAllMovies] = useState<boolean>(true);
+	const [upcoming, setUpcoming] = useState<boolean>(false);
 
 	useEffect(() => {
-		getMovies();
-	}, [pageNumber]);
+		const getMovies = async () => {
+			const result = await getAllMovies(pageNumber);
+			setMovies(result ?? []);
+		};
+		if (allMovies) {
+			getMovies();
+		}
+	}, [pageNumber, allMovies]);
 
 	const getClickedCategory = (category: Category) => {
+		setAllMovies(false);
+		setUpcoming(false);
 		setCategory(category);
+	};
+
+	const handleAllMoviesClicked = () => {
+		setCategory(undefined);
+		setUpcoming(false);
+		setAllMovies(true);
+	};
+
+	const handleUpcomingClicked = () => {
+		setCategory(undefined);
+		setAllMovies(false);
+		setUpcoming(true);
 	};
 
 	useEffect(() => {
 		const getByCategory = async () => {
-			const result = await getMoviesByCategory(category?.id);
+			const result = await getMoviesByCategory(category?.id, pageNumber);
 			setMovies(result ?? []);
 		};
 		getByCategory();
-	}, [category]);
+	}, [category, pageNumber]);
 
 	useEffect(() => {
 		const getMoviesBySearching = async () => {
@@ -56,14 +67,13 @@ export const HomePage = () => {
 		}
 	}, [query]);
 
-	const getUpcoming = async () => {
-		const result = await getUpcomingMovies();
-		setMovies(result ?? []);
-	};
-
 	useEffect(() => {
-		getUpcoming();
-	}, []);
+		const getUpcoming = async () => {
+			const result = await getUpcomingMovies();
+			setMovies(result ?? []);
+		};
+		if (upcoming) getUpcoming();
+	}, [upcoming]);
 
 		const getTrending = async () => {
 			const result = await getTrendingMovies();
@@ -86,15 +96,16 @@ export const HomePage = () => {
 					getMovies={getMovies}
 					getUpcoming={getUpcoming}
 					getTrending={getTrending}
+
 				/>
 
 				<div className="movie_and_pagination_container">
 					<MoviesList
-						pageNumber={getPageNumber}
+						pageNumber={setPageNumber}
 						movies={movies}
 					/>
 					<Pagination
-						getPageNumber={getPageNumber}
+						getPageNumber={setPageNumber}
 						pageNumber={pageNumber}
 					/>
 				</div>
