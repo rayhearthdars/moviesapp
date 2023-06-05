@@ -91,7 +91,10 @@ export const HomePage = () => {
 			<SearchBar search={setQuery} />
 			<main id="main">
 				<CategoriesList
-
+					getCategory={getClickedCategory}
+					getPageNumber={setPageNumber}
+					getMovies={handleAllMoviesClicked}
+					getUpcoming={handleUpcomingClicked}
 				/>
 
 				<div className="movie_and_pagination_container">
