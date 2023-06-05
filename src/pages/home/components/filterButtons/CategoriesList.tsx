@@ -6,7 +6,6 @@ import "./CategoriesList.css";
 import { AllMoviesButton } from "./AllMoviesButton";
 import { UpcomingButton } from "./UpcominButton";
 import { TrendingButton } from "./TrendingButton";
-import { getTrendingMovies } from "../../../../api/movie";
 
 export const CategoriesList = ({
 	getCategory,
@@ -17,9 +16,8 @@ export const CategoriesList = ({
 }: {
 	getCategory: (category: Category) => void;
 	getPageNumber: (pageNumber: number) => void;
-	getMovies: () => Promise<void>;
-	getUpcoming: () => Promise<void>;
-	getTrending: () => Promise<void>;
+	getMovies: () => void;
+	getUpcoming: () => void;
 
 }) => {
 	const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
