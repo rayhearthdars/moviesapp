@@ -4,14 +4,11 @@ import "./CategoryButton.css";
 export const UpcomingButton = ({
 	getUpcoming,
 	getPageNumber,
-	getClickedCategoryOtherThanGenre,
 }: {
-	getUpcoming: () => Promise<void>;
+	getUpcoming: () => void;
 	getPageNumber: (pageNumber: number) => void;
-	getClickedCategoryOtherThanGenre: (otherCategories: string |undefined) => void;
 }) => {
 	const setUpcoming = () => {
-		getClickedCategoryOtherThanGenre("upComingCategory");
 		getPageNumber(1);
 		getUpcoming();
 	};

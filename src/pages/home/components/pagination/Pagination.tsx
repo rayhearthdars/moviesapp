@@ -1,6 +1,5 @@
 import React from "react";
 import "./Pagination.css";
-import { Category } from "../../../../models/category";
 
 const pages: number[] = [];
 const totalPages = 50;
@@ -11,86 +10,15 @@ for (let i = 1; i <= totalPages; i++) {
 type PaginationProps = {
 	getPageNumber: (pageNumber: number) => void;
 	pageNumber: number;
-	getByCategory: () => Promise<void>;
-	category: Category | undefined;
-	categoryOtherThanGenres: string |undefined;
-	getUpcoming: () => Promise<void>;
-	getMovies: () => Promise<void>;
 };
 
-export const Pagination = ({
-	getPageNumber,
-	pageNumber,
-	getByCategory,
-	category,
-	categoryOtherThanGenres,
-	getUpcoming,
-	getMovies,
-}: PaginationProps) => {
-	const nextClick = () => {
-		if (pageNumber < totalPages) {
-			let newPage = pageNumber + 1;
-
-			if (categoryOtherThanGenres === "upComingCategory") {
-				getUpcoming();
-				getPageNumber(newPage);
-			}
-			if (categoryOtherThanGenres === "categoryAllMovies") {
-				getMovies();
-				getPageNumber(newPage);
-			}
-			if (category) {
-				getByCategory();
-				getPageNumber(newPage);
-			}
-		}
-	};
-	const prevClick = () => {
-		if (pageNumber > 1) {
-			let newPage = pageNumber - 1;
-			if (categoryOtherThanGenres === "upComingCategory") {
-				getUpcoming();
-				getPageNumber(newPage);
-			}
-			if (categoryOtherThanGenres === "categoryAllMovies") {
-				getMovies();
-				getPageNumber(newPage);
-			}
-			if (category) {
-				getByCategory();
-				getPageNumber(newPage);
-			}
-		}
-	};
-
+export const Pagination = ({ getPageNumber, pageNumber }: PaginationProps) => {
 	const clickToLast = () => {
-		if (categoryOtherThanGenres === "upComingCategory") {
-			getUpcoming();
-			getPageNumber(totalPages);
-		}
-		if (categoryOtherThanGenres === "categoryAllMovies") {
-			getMovies();
-			getPageNumber(totalPages);
-		}
-		if (category) {
-			getByCategory();
-			getPageNumber(totalPages);
-		}
+		getPageNumber(totalPages);
 	};
 
 	const clickToFirst = () => {
-		if (categoryOtherThanGenres === "upComingCategory") {
-			getUpcoming();
-			getPageNumber(1);
-		}
-		if (categoryOtherThanGenres === "categoryAllMovies") {
-			getMovies();
-			getPageNumber(1);
-		}
-		if (category) {
-			getByCategory();
-			getPageNumber(1);
-		}
+		getPageNumber(1);
 	};
 
 	return (
@@ -105,7 +33,7 @@ export const Pagination = ({
 			<button
 				className="pagination_button"
 				type="button"
-				onClick={() => prevClick()}
+				onClick={() => getPageNumber(pageNumber - 1)}
 			>
 				Prev
 			</button>
@@ -117,6 +45,7 @@ export const Pagination = ({
 			</p>
 			{pages.map((page) => (
 				<button
+					key={page}
 					className="pagination_button "
 					id={pageNumber === page ? "isActive" : "isNotActive"}
 					type="button"
@@ -135,7 +64,7 @@ export const Pagination = ({
 			<button
 				className="pagination_button"
 				type="button"
-				onClick={() => nextClick()}
+				onClick={() => getPageNumber(pageNumber + 1)}
 			>
 				Next
 			</button>

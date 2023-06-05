@@ -4,14 +4,11 @@ import "./CategoryButton.css";
 export const AllMoviesButton = ({
 	getMovies,
 	getPageNumber,
-	getClickedCategoryOtherThanGenre,
 }: {
-	getMovies: () => Promise<void>;
+	getMovies: () => void;
 	getPageNumber: (pageNumber: number) => void;
-	getClickedCategoryOtherThanGenre: (otherCategories: string | undefined) => void;
 }) => {
 	const setUpcoming = () => {
-		getClickedCategoryOtherThanGenre("categoryAllMovies");
 		getPageNumber(1);
 		getMovies();
 	};

@@ -11,13 +11,11 @@ export const CategoriesList = ({
 	getPageNumber,
 	getMovies,
 	getUpcoming,
-	getClickedCategoryOtherThanGenre,
 }: {
 	getCategory: (category: Category) => void;
 	getPageNumber: (pageNumber: number) => void;
-	getMovies: () => Promise<void>;
-	getUpcoming: () => Promise<void>;
-	getClickedCategoryOtherThanGenre: (otherCategories: string | undefined) => void;
+	getMovies: () => void;
+	getUpcoming: () => void;
 }) => {
 	const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
 
@@ -37,12 +35,10 @@ export const CategoriesList = ({
 			<AllMoviesButton
 				getMovies={getMovies}
 				getPageNumber={getPageNumber}
-				getClickedCategoryOtherThanGenre={getClickedCategoryOtherThanGenre}
 			/>
 			<UpcomingButton
 				getPageNumber={getPageNumber}
 				getUpcoming={getUpcoming}
-				getClickedCategoryOtherThanGenre={getClickedCategoryOtherThanGenre}
 			/>
 			{categoriesData.map((category) => (
 				<CategoryButton
