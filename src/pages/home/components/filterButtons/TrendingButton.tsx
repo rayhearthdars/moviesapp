@@ -1,12 +1,12 @@
 import React from "react";
 
 
-export const TrendingButton = ({ getTrendingButton }: { getTrendingButton: () => Promise<void> }) => {
+export const TrendingButton = ({ getTrending }: { getTrending: () => Promise<void> }) => {
 	return (
 		<button
 			className="category-button"
 			type="button"
-			onClick={() => getTrendingButton()}
+			onClick={() => getTrending()}
 		>
 			Trending
 		</button>
