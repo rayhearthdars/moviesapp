@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getAllMovies, getMoviesByCategory, getMoviesBySearch, getTrendingMovies } from "../../api/movie";
+import { getAllMovies, getMoviesByCategory, getMoviesBySearch } from "../../api/movie";
 import { MoviesList } from "./components/MoviesList/MoviesList";
 import { Header } from "../../components/Header";
 import { CategoriesList } from "./components/filterButtons/CategoriesList";
@@ -8,53 +8,41 @@ import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import "./HomePage.css";
+import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { getUpcomingMovies } from "../../api/movie";
+import { UpcomingButton } from "./components/filterButtons/UpcominButton";
 import { Pagination } from "./components/pagination/Pagination";
-import { TrendingButton } from "./components/filterButtons/TrendingButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
-	const [pageNumber, setPageNumber] = useState<number>(1);
+	const [pageNumber, setPageNumber] = useState(1);
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
-	const [allMovies, setAllMovies] = useState<boolean>(true);
-	const [upcoming, setUpcoming] = useState<boolean>(false);
+
+	const getPageNumber = (pageNumber: number) => {
+		setPageNumber(pageNumber);
+	};
+
+	const getMovies = async () => {
+		const result = await getAllMovies(pageNumber);
+		setMovies(result ?? []);
+	};
 
 	useEffect(() => {
-		const getMovies = async () => {
-			const result = await getAllMovies(pageNumber);
-			setMovies(result ?? []);
-		};
-		if (allMovies) {
-			getMovies();
-		}
-	}, [pageNumber, allMovies]);
+		getMovies();
+	}, [pageNumber]);
 
 	const getClickedCategory = (category: Category) => {
-		setAllMovies(false);
-		setUpcoming(false);
 		setCategory(category);
-	};
-
-	const handleAllMoviesClicked = () => {
-		setCategory(undefined);
-		setUpcoming(false);
-		setAllMovies(true);
-	};
-
-	const handleUpcomingClicked = () => {
-		setCategory(undefined);
-		setAllMovies(false);
-		setUpcoming(true);
 	};
 
 	useEffect(() => {
 		const getByCategory = async () => {
-			const result = await getMoviesByCategory(category?.id, pageNumber);
+			const result = await getMoviesByCategory(category?.id);
 			setMovies(result ?? []);
 		};
 		getByCategory();
-	}, [category, pageNumber]);
+	}, [category]);
 
 	useEffect(() => {
 		const getMoviesBySearching = async () => {
@@ -67,23 +55,14 @@ export const HomePage = () => {
 		}
 	}, [query]);
 
+	const getUpcoming = async () => {
+		const result = await getUpcomingMovies();
+		setMovies(result ?? []);
+	};
+
 	useEffect(() => {
-		const getUpcoming = async () => {
-			const result = await getUpcomingMovies();
-			setMovies(result ?? []);
-		};
-		if (upcoming) getUpcoming();
-	}, [upcoming]);
-
-		const getTrending = async () => {
-			const result = await getTrendingMovies();
-			setMovies(result ?? []);
-		};
-
-		useEffect(() => {
-			getTrending();
-		}, []);
-
+		getUpcoming();
+	}, []);
 
 	return (
 		<>
@@ -95,17 +74,15 @@ export const HomePage = () => {
 					getPageNumber={getPageNumber}
 					getMovies={getMovies}
 					getUpcoming={getUpcoming}
-					getTrending={getTrending}
-
 				/>
 
 				<div className="movie_and_pagination_container">
 					<MoviesList
-						pageNumber={setPageNumber}
+						pageNumber={getPageNumber}
 						movies={movies}
 					/>
 					<Pagination
-						getPageNumber={setPageNumber}
+						getPageNumber={getPageNumber}
 						pageNumber={pageNumber}
 					/>
 				</div>
