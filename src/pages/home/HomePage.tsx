@@ -11,6 +11,7 @@ import "./HomePage.css";
 import { AllMoviesButton } from "./components/filterButtons/AllMoviesButton";
 import { getUpcomingMovies } from "../../api/movie";
 import { UpcomingButton } from "./components/filterButtons/UpcominButton";
+import { Pagination } from "./components/pagination/Pagination";
 import { TrendingButton } from "./components/filterButtons/TrendingButton";
 
 export const HomePage = () => {
@@ -19,10 +20,9 @@ export const HomePage = () => {
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
 
-
-	const getPageNumber = (pageNumber:number) => {
+	const getPageNumber = (pageNumber: number) => {
 		setPageNumber(pageNumber);
-}
+	};
 
 	const getMovies = async () => {
 		const result = await getAllMovies(pageNumber);
@@ -56,14 +56,14 @@ export const HomePage = () => {
 		}
 	}, [query]);
 
-		const getUpcoming = async () => {
-			const result = await getUpcomingMovies();
-			setMovies(result ?? []);
-		};
+	const getUpcoming = async () => {
+		const result = await getUpcomingMovies();
+		setMovies(result ?? []);
+	};
 
-		useEffect(() => {
-			getUpcoming();
-		}, []);
+	useEffect(() => {
+		getUpcoming();
+	}, []);
 
 		const getTrending = async () => {
 			const result = await getTrendingMovies();
@@ -78,19 +78,26 @@ export const HomePage = () => {
 	return (
 		<>
 			<Header />
-
 			<SearchBar search={setQuery} />
 			<main id="main">
-				<section className="button-container">
-					<AllMoviesButton getMovies={getMovies} />
-					<UpcomingButton getUpcoming={getUpcoming} />
-					<TrendingButton getTrendingButton={getTrending}/>
-					<CategoriesList getCategory={getClickedCategory} />
-				</section>
-				<MoviesList
-					pageNumber={getPageNumber}
-					movies={movies}
+				<CategoriesList
+					getCategory={getClickedCategory}
+					getPageNumber={getPageNumber}
+					getMovies={getMovies}
+					getUpcoming={getUpcoming}
+					getTrending={getTrending}
 				/>
+
+				<div className="movie_and_pagination_container">
+					<MoviesList
+						pageNumber={getPageNumber}
+						movies={movies}
+					/>
+					<Pagination
+						getPageNumber={getPageNumber}
+						pageNumber={pageNumber}
+					/>
+				</div>
 			</main>
 		</>
 	);

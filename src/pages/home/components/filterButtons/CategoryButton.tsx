@@ -6,13 +6,17 @@ type CategoryButtonProps = {
 	name: string;
 	getCategory: (category: Category) => void;
 	category: Category;
+	getPageNumber: (pageNumber: number) => void;
 };
 
-export const CategoryButton = ({ category, name, getCategory }: CategoryButtonProps) => {
+export const CategoryButton = ({ category, name, getCategory, getPageNumber }: CategoryButtonProps) => {
 	return (
 		<button
 			type="button"
-			onClick={() => getCategory(category)}
+			onClick={() => {
+				getPageNumber(1);
+				getCategory(category);
+			}}
 			className="category-button"
 		>
 			{name}

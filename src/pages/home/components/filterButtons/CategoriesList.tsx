@@ -3,9 +3,20 @@ import { getCategories } from "../../../../api/category";
 import { CategoryButton } from "../filterButtons/CategoryButton";
 import { Category } from "../../../../models/category";
 import "./CategoriesList.css";
+import { AllMoviesButton } from "./AllMoviesButton";
+import { UpcomingButton } from "./UpcominButton";
 
-
-export const CategoriesList = ({ getCategory }: { getCategory: (category: Category) => void }) => {
+export const CategoriesList = ({
+	getCategory,
+	getPageNumber,
+	getMovies,
+	getUpcoming,
+}: {
+	getCategory: (category: Category) => void;
+	getPageNumber: (pageNumber: number) => void;
+	getMovies: () => Promise<void>;
+	getUpcoming: () => Promise<void>;
+}) => {
 	const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
 
 	useEffect(() => {
@@ -20,16 +31,24 @@ export const CategoriesList = ({ getCategory }: { getCategory: (category: Catego
 
 	if (categoriesData === null) return null;
 	return (
-		<>
-			
+		<aside className="button-container">
+			<AllMoviesButton
+				getMovies={getMovies}
+				getPageNumber={getPageNumber}
+			/>
+			<UpcomingButton
+				getPageNumber={getPageNumber}
+				getUpcoming={getUpcoming}
+			/>
 			{categoriesData.map((category) => (
 				<CategoryButton
 					key={category.name}
 					name={category.name}
 					getCategory={getCategory}
 					category={category}
+					getPageNumber={getPageNumber}
 				/>
 			))}
-		</>
+		</aside>
 	);
 };

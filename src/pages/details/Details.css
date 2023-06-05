@@ -45,6 +45,7 @@
 	font-weight: 300;
 	font-size: 3.5rem;
 	width: 20rem;
+	color: #d9d9d9;
 }
 .details_ratings_container {
 	margin-top: 5rem;
@@ -61,27 +62,26 @@
 .details_ratings_actual_number {
 	position: relative;
 	top: 35%;
-	left: 20%;
-	font-size: 2rem;
+	left: 35%;
+	font-size: 1.8rem;
 }
 
 .details_ratings {
 	padding-top: 3rem;
 	padding-left: 1rem;
-	font-size: 1.8rem;
-}
-.details_release_date_container {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
+	color: #d9d9d9;
 }
 .details_release_date_container {
 	margin: 5rem auto;
+	color: #d9d9d9;
 }
 
 .details_overview {
 	width: 30%;
-	margin: 0 auto;
+	margin: 2rem auto;
 	line-height: 2;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	background-color: #d9d9d9;
 	padding: 1rem;
 	border-radius: 10px;
@@ -92,7 +92,7 @@
 	line-height: 2;
 }
 
-@media screen and (max-width: 728px) {
+@media screen and (max-width: 1100px) {
 	.details_overview {
 		width: 75%;
 	}

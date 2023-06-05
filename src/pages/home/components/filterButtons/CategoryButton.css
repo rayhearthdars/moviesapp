@@ -2,6 +2,7 @@
     background-color: gray;
     padding: 5px;
     border: 1px solid lightgray;
+    width: 10rem;
     font-size:x-large;
 	font-family: 'Inder', sans-serif;
 }
@@ -13,15 +14,3 @@
     background-color: lightgray;
 }
 
-.button-container{
-    display: flex;
-    flex-direction: column;
-    margin-right: 1.5vw;
-    width: 100%;
-    height: inherit;
-    overflow: auto;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}

@@ -1,13 +1,15 @@
 import React from "react";
 import "./CategoryButton.css";
 
-
-export const UpcomingButton = ({ getUpcoming }: { getUpcoming: () => Promise<void> }) => {
+export const UpcomingButton = ({ getUpcoming, getPageNumber }: { getUpcoming: () => Promise<void>; getPageNumber: (pageNumber: number) => void }) => {
 	return (
 		<button
 			className="category-button"
 			type="button"
-			onClick={() => getUpcoming()}
+			onClick={() => {
+				getPageNumber(1);
+				getUpcoming();
+			}}
 		>
 			Upcoming
 		</button>
