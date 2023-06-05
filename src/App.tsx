@@ -1,14 +1,18 @@
 import React from "react";
 import "./App.css";
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { Header } from './components/Header';
 import { Details } from "./pages/details/Details";
 import { HomePage } from "./pages/home/HomePage";
+import { Header } from "./components/Header";
 
 function App() {
-	const router = createBrowserRouter(
-		createRoutesFromElements(
-			<>
+
+
+	return (
+		<Router>
+			<Header />
+			<Routes>
 				<Route
 					path=""
 					element={<HomePage />}
@@ -17,10 +21,9 @@ function App() {
 					path={`/details/:movieId`}
 					element={<Details />}
 				/>
-			</>
-		)
+			</Routes>
+		</Router>
 	);
-	return <RouterProvider router={router} />;
 }
 
 export default App;

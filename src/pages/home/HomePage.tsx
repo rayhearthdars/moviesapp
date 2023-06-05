@@ -95,7 +95,6 @@ export const HomePage = () => {
 
 	return (
 		<>
-			<Header />
 			<SearchBar search={setQuery} />
 			<main id="main">
 				<CategoriesList
