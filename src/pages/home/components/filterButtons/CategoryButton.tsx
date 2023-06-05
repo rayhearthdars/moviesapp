@@ -16,6 +16,7 @@ export const CategoryButton = ({ category, name, getCategory, getPageNumber }: C
 			onClick={() => {
 				getPageNumber(1);
 				getCategory(category);
+				
 			}}
 			className="category-button"
 		>
