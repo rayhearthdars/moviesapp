@@ -14,8 +14,8 @@ export const CategoriesList = ({
 }: {
 	getCategory: (category: Category) => void;
 	getPageNumber: (pageNumber: number) => void;
-	getMovies: () => Promise<void>;
-	getUpcoming: () => Promise<void>;
+	getMovies: () => void;
+	getUpcoming: () => void;
 }) => {
 	const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
 
@@ -29,7 +29,7 @@ export const CategoriesList = ({
 		getCategoriesList();
 	}, []);
 
-	if (categoriesData === null) return null;
+	if (categoriesData == null) return null;
 	return (
 		<aside className="button-container">
 			<AllMoviesButton
