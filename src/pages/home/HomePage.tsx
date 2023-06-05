@@ -91,11 +91,6 @@ export const HomePage = () => {
 			<SearchBar search={setQuery} />
 			<main id="main">
 				<CategoriesList
-					getCategory={getClickedCategory}
-					getPageNumber={getPageNumber}
-					getMovies={getMovies}
-					getUpcoming={getUpcoming}
-					getTrending={getTrending}
 
 				/>
 
