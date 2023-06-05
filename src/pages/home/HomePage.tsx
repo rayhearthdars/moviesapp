@@ -94,7 +94,7 @@ export const HomePage = () => {
 					getCategory={getClickedCategory}
 					getPageNumber={getPageNumber}
 					getMovies={getMovies}
-					getUpcoming={getUpcoming}
+					setUpcoming={setUpcoming}
 					getTrending={getTrending}
 
 				/>
