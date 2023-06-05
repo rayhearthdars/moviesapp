@@ -12,13 +12,13 @@ export const CategoriesList = ({
 	getPageNumber,
 	getMovies,
 	getUpcoming,
-	getTrending
+	getTrending,
 }: {
 	getCategory: (category: Category) => void;
 	getPageNumber: (pageNumber: number) => void;
 	getMovies: () => void;
 	getUpcoming: () => void;
-
+	getTrending: () => void;
 }) => {
 	const [categoriesData, setCategoriesData] = useState<Category[] | null>(null);
 
@@ -43,7 +43,10 @@ export const CategoriesList = ({
 				getPageNumber={getPageNumber}
 				getUpcoming={getUpcoming}
 			/>
-			<TrendingButton getTrending={getTrending}/>
+			<TrendingButton
+				getTrending={getTrending}
+				getPageNumber={getPageNumber}
+			/>
 			{categoriesData.map((category) => (
 				<CategoryButton
 					key={category.name}

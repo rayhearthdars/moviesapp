@@ -48,8 +48,8 @@ export const getMoviesBySearch = async (query: string | undefined) => {
 	}
 };
 
-export const getUpcomingMovies = async () => {
-	const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API}`;
+export const getUpcomingMovies = async (pageNumber: number | undefined) => {
+	const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API}&page=${pageNumber}`;
 	try {
 		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
 	} catch (err) {
@@ -57,12 +57,11 @@ export const getUpcomingMovies = async () => {
 	}
 };
 
-export const getTrendingMovies = async () => {
-	const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API}`;
+export const getTrendingMovies = async (pageNumber: number | undefined) => {
+	const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API}&page=${pageNumber}`;
 	try {
 		return axios.get<{ results: Movie[] }>(url).then((res) => res.data.results);
 	} catch (err) {
 		console.error(err);
 	}
 };
-

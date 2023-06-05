@@ -10,7 +10,6 @@ import { SearchBar } from "./components/SearchBar/SearchBar";
 import "./HomePage.css";
 import { getUpcomingMovies } from "../../api/movie";
 import { Pagination } from "./components/pagination/Pagination";
-import { TrendingButton } from "./components/filterButtons/TrendingButton";
 
 export const HomePage = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
@@ -19,6 +18,7 @@ export const HomePage = () => {
 	const [query, setQuery] = useState<string>("");
 	const [allMovies, setAllMovies] = useState<boolean>(true);
 	const [upcoming, setUpcoming] = useState<boolean>(false);
+	const [trendingButton, setTrendingButton] = useState<boolean>(false);
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -33,6 +33,7 @@ export const HomePage = () => {
 	const getClickedCategory = (category: Category) => {
 		setAllMovies(false);
 		setUpcoming(false);
+		setTrendingButton(false);
 		setCategory(category);
 	};
 
@@ -40,12 +41,21 @@ export const HomePage = () => {
 		setCategory(undefined);
 		setUpcoming(false);
 		setAllMovies(true);
+		setTrendingButton(false);
 	};
 
 	const handleUpcomingClicked = () => {
 		setCategory(undefined);
 		setAllMovies(false);
 		setUpcoming(true);
+		setTrendingButton(false);
+	};
+
+	const handleTrendingButtonClicked = () => {
+		setCategory(undefined);
+		setAllMovies(false);
+		setUpcoming(false);
+		setTrendingButton(true);
 	};
 
 	useEffect(() => {
@@ -69,21 +79,19 @@ export const HomePage = () => {
 
 	useEffect(() => {
 		const getUpcoming = async () => {
-			const result = await getUpcomingMovies();
+			const result = await getUpcomingMovies(pageNumber);
 			setMovies(result ?? []);
 		};
 		if (upcoming) getUpcoming();
-	}, [upcoming]);
+	}, [upcoming, pageNumber]);
 
+	useEffect(() => {
 		const getTrending = async () => {
-			const result = await getTrendingMovies();
+			const result = await getTrendingMovies(pageNumber);
 			setMovies(result ?? []);
 		};
-
-		useEffect(() => {
-			getTrending();
-		}, []);
-
+		getTrending();
+	}, [trendingButton, pageNumber]);
 
 	return (
 		<>
@@ -95,8 +103,8 @@ export const HomePage = () => {
 					getPageNumber={setPageNumber}
 					getMovies={handleAllMoviesClicked}
 					getUpcoming={handleUpcomingClicked}
+					getTrending={handleTrendingButtonClicked}
 				/>
-
 				<div className="movie_and_pagination_container">
 					<MoviesList
 						pageNumber={setPageNumber}
