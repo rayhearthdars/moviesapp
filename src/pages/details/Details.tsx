@@ -20,6 +20,7 @@ export const Details = () => {
 	if (movieData === null) return null;
 	return (
 		<>
+		{/* It probably should be in the header */}
 			<main className="main_container">
 				<Link to="/">
 					<button
