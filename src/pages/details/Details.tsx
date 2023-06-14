@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getMovieById } from "../../api/movie";
 import { Movie } from "../../models/movie";
-import { Header } from "../../components/Header";
 import "./Details.css";
 
 export const Details = () => {

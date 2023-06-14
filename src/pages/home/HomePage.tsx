@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getAllMovies, getMoviesByCategory, getMoviesBySearch, getTrendingMovies } from "../../api/movie";
 import { MoviesList } from "./components/MoviesList/MoviesList";
-import { Header } from "../../components/Header";
 import { CategoriesList } from "./components/filterButtons/CategoriesList";
 import { Movie } from "../../models/movie";
 import { Category } from "../../models/category";
