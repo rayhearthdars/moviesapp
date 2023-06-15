@@ -15,6 +15,8 @@ export const HomePage = () => {
 	const [pageNumber, setPageNumber] = useState<number>(1);
 	const [category, setCategory] = useState<Category | undefined>(undefined);
 	const [query, setQuery] = useState<string>("");
+	// YOu could have had a value for the buttons and handle it in one state variable as the category
+	// It would have been easier to read :)
 	const [allMovies, setAllMovies] = useState<boolean>(true);
 	const [upcoming, setUpcoming] = useState<boolean>(false);
 	const [trendingButton, setTrendingButton] = useState<boolean>(false);

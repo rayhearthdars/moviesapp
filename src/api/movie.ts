@@ -3,6 +3,7 @@ import { Movie } from "../models/movie";
 
 const API = process.env.REACT_APP_API_KEY;
 
+// Id should not be optional here
 export const getMovieById = async (id: string | undefined) => {
 	if (id == null) return;
 	const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API}`;
@@ -15,6 +16,7 @@ export const getMovieById = async (id: string | undefined) => {
 	return result;
 };
 
+// You can add a default value to the pageNumber ("1") instead of having it optional
 export const getMoviesByCategory = async (category: number | undefined, pageNumber: number | undefined) => {
 	if (category == null) return;
 	if (pageNumber == null) return;
