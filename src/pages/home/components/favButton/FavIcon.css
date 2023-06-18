@@ -1,0 +1,40 @@
+.fav-icon-position {
+  position: relative;
+}
+.fav-icon-position .fav {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.2em;
+  background-color: white;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.fav-icon-position .fav .add-to-fav {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  right: 0;
+  visibility: hidden;
+}
+
+.fav-icon-position .fav:hover .add-to-fav {
+  transform: translateY(-100%);
+  visibility: visible;
+}
+
+.favt {
+  background-image: url("../../../../assets/favt.svg");
+}
+
+.favf {
+  background-image: url("../../../../assets/favf.svg");
+}
