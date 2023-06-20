@@ -9,31 +9,18 @@ import { FavoritesProvider } from "./context/FavoritesContext";
 import { Favorites } from "./pages/favorites/Favorites";
 
 function App() {
-
-
-	return (
-		<Router>
-			<FavoritesProvider>
-				
-			<Header />
-			<Routes>
-				<Route
-					path=""
-					element={<HomePage />}
-				/>
-				<Route
-					path={`/details/:movieId`}
-					element={<Details />}
-				/>
-				<Route
-					path={`/favorites`}
-					element={<Favorites />}
-				/>
-			</Routes>
-			
-			</FavoritesProvider>
-		</Router>
-	);
+  return (
+    <Router>
+      <FavoritesProvider>
+        <Header />
+        <Routes>
+          <Route path="" element={<HomePage />} />
+          <Route path={`/details/:movieId`} element={<Details />} />
+          <Route path={`/favorites`} element={<Favorites />} />
+        </Routes>
+      </FavoritesProvider>
+    </Router>
+  );
 }
 
 export default App;

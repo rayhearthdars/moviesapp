@@ -23,7 +23,7 @@ export const FavoritesProvider = ({ children }: ContextProp) => {
   // prettier-ignore
   const [favoriteList, setFavorites] = useState<string[]>( getLocalStorage().length ? getLocalStorage() : []);
 
-  //if the favorite icon wa reclicked , removeFav would be true with the function toggleRemoveFav
+  //if the favorite icon was reclicked , removeFav would be true with the function toggleRemoveFav
   const [removeFav, setRemoveFav] = useState<boolean>(false);
 
   //add or remove movie id from favoriteList
